@@ -120,9 +120,10 @@ def write_products_to_csv(
 
 
 def get_all_products() -> None:
-    for name, url in URLS.items():
-        with (webdriver.Chrome(options=options) as driver):
-            set_driver(driver)
+    with webdriver.Chrome(options=options) as driver:
+        set_driver(driver)
+
+        for name, url in URLS.items():
             driver.get(url)
 
             file_name = name.split("_")[0].lower() + ".csv"
